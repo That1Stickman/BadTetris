@@ -1,15 +1,20 @@
-/** @class Class representing a tile */
 class Tile {
     /**
+     * Creates instance of Tile
      * 
-     * @param {number} x The x value of a tile
-     * @param {number} y The y value of a board
+     * @param {number} row The row of a tile
+     * @param {number} column The column of a board
      */
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.id = `${x + y}`;
+    constructor(row, column) {
+        this.x = row;
+        this.column = column;
+        this.id = `${row}${column}`;
     }
+    
+    
 }
 
 // Main code
+
+const t = new Tile(1, 1);
+console.log(t.id);
