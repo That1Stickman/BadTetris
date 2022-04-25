@@ -7,11 +7,8 @@
  */
  function createBoard(x, y, board) {
     for (let i = x; i < y; i++) {
-
+        board.innerHTML += "<p>test</p>";
     }
 }
 
 // Main code
-
-const b = document.getElementById("board")
-console.log(typeof b)
