@@ -10,8 +10,14 @@ class Tile {
         this.column = column;
         this.id = `${row}${column}`;
     }
-    
-    
+}
+
+function createBoard(width, length) {
+    for (let row = 0; row < width; row++) {
+        for (let column = 0; column < width; column++) {
+            
+        }
+    }
 }
 
 // Main code
