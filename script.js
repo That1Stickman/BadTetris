@@ -21,6 +21,3 @@ function createBoard(width, length) {
 }
 
 // Main code
-
-const t = new Tile(1, 1);
-console.log(t.id);
