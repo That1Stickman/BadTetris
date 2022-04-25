@@ -1,3 +1,10 @@
+class Tile {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
 /**
  * Create the tetris board
  * 
@@ -7,7 +14,7 @@
  */
  function createBoard(x, y, board) {
     for (let i = x; i < y; i++) {
-        board.innerHTML += "<p>test</p>";
+        // board.innerHTML += 
     }
 }
 
