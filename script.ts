@@ -31,23 +31,20 @@ class Tile {
  * 
  * @param {number} width - The width of the board
  * @param {number} height - The height of the board
+ * @param {HTMLElement} board - The HTML element where the board will go
  * @returns - HTML elements of board
  */
-function createBoard(width: number, height: number) {
-  let board = "";
-
-  for (let row = 1; row <= width; row++) {
-    for (let column = 1; column <= height; column++) {
-      const tile = new Tile(row, column);
-      board += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}">`;
+function createBoard(width: number, height: number, board: HTMLElement) {
+  for (let i = 1; i <= width; i++) {
+    let row = "";
+    for (let j = 1; j <= height; j++) {
+      const tile = new Tile(i, j);
+      row += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}"></div>`;
     }
-
-    board += "<br>";
+    board.innerHTML += `<div id="r${i}" class="row">${row}</div>`;
   }
-
-  return board;
 }
 
 // Main code
 
-document.getElementById("board").innerHTML = createBoard(2, 2);
+createBoard(3, 3, document.getElementById("board"));
