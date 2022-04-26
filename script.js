@@ -1,17 +1,22 @@
-/**
- * Create the tetris board
- * 
- * @param {number} x The x value (width) of the board
- * @param {number} y The y value (length) of the board
- * @param {object} board The div which the board is to be created
- */
- function createBoard(x, y, board) {
-    for (let i = x; i < y; i++) {
-
+var Tile = (function () {
+    function Tile(row, column) {
+        this.row = row;
+        this.column = column;
+        this.id = "r".concat(row, "c").concat(column);
+        this.state = "unfilled";
+        this.color = null;
     }
+    return Tile;
+}());
+function createBoard(width, height) {
+    var board = "";
+    for (var row = 1; row <= width; row++) {
+        for (var column = 1; column <= height; column++) {
+            var tile = new Tile(row, column);
+            board += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
+        }
+        board += "<br>";
+    }
+    return board;
 }
-
-// Main code
-
-const b = document.getElementById("board")
-console.log(typeof b)
+document.getElementById("board").innerHTML = createBoard(2, 2);
