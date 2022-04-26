@@ -1,5 +1,6 @@
 .tile {
   --background-color: black;
+  display: inline-block;
   width: 50px;
   height: 50px;
   background-color: var(--background-color);
