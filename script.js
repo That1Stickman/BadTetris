@@ -8,15 +8,14 @@ var Tile = (function () {
     }
     return Tile;
 }());
-function createBoard(width, height) {
-    var board = "";
-    for (var row = 1; row <= width; row++) {
-        for (var column = 1; column <= height; column++) {
-            var tile = new Tile(row, column);
-            board += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
+function createBoard(width, height, board) {
+    for (var i = 1; i <= width; i++) {
+        var row = "";
+        for (var j = 1; j <= height; j++) {
+            var tile = new Tile(i, j);
+            row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\"></div>");
         }
-        board += "<br>";
+        board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
     }
-    return board;
 }
-document.getElementById("board").innerHTML = createBoard(2, 2);
+createBoard(3, 3, document.getElementById("board"));
