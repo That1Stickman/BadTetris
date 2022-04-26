@@ -4,10 +4,10 @@ class Tile {
   row: number;
   column: number;
   id: string;
-
+  
   state: "filled" | "unfilled" | "active";
   color: color;
-
+  
   /**
    * Constructs a new tile
    * 
