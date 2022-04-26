@@ -1,12 +1,13 @@
-type color = "cyan" | "yellow" | "purple" | "green" | "red" | "blue" | "orange";
+type Color = "cyan" | "yellow" | "purple" | "green" | "red" | "blue" | "orange";
 
+// Tile and board
 class Tile {
   row: number;
   column: number;
   id: string;
   
   state: "filled" | "unfilled" | "active";
-  color: color;
+  color: Color;
   
   /**
    * Constructs a new tile
@@ -45,6 +46,19 @@ function createBoard(width: number, height: number) {
   }
   return board;
 }
+
+// Pieces
+interface Piece {
+  color: Color;
+}
+
+const I: Piece = {color: "cyan"}
+const J: Piece = {color: "blue"}
+const L: Piece = {color: "orange"}
+const O: Piece = {color: "yellow"}
+const S: Piece = {color: "green"}
+const T: Piece = {color: "purple"}
+const Z: Piece = {color: "red"}
 
 // Main code
 
