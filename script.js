@@ -23,14 +23,16 @@ var Tile = /** @class */ (function () {
  * @param {number} height - The height of the board
  * @param {object} board - The element where the board will go
  */
-function createBoard(width, height, board) {
+function createBoard(width, height) {
+    board = "";
     for (var row = 1; row <= width; row++) {
         for (var column = 1; column <= height; column++) {
             var tile = new Tile(row, column);
-            board.innerHTML += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
+            board += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
         }
-        board.innerHTML += "<br>";
+        board += "<br>";
     }
+    return board;
 }
 // Main code
-createBoard(2, 2, document.getElementById("board"));
+document.getElementById("board").innerHTML = createBoard(2, 2);

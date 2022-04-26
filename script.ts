@@ -5,7 +5,7 @@ class Tile {
   column: number;
   id: string;
 
-  filled: boolean;
+  state: "filled" | "unfilled" | "active";
   color: color;
 
   /**
@@ -21,8 +21,8 @@ class Tile {
     this.column = column;
     this.id = `r${row}c${column}`;
 
-    this.filled = false;
-    // this.color = null;
+    this.state = "unfilled";
+    this.color = null;
   }
 }
 
@@ -33,17 +33,20 @@ class Tile {
  * @param {number} height - The height of the board
  * @param {object} board - The element where the board will go
  */
-function createBoard(width: number, height: number, board) {
+function createBoard(width: number, height: number) {
+  let board = ""
   for (let row = 1; row <= width; row++) {
     for (let column = 1; column <= height; column++) {
       const tile = new Tile(row, column);
-      board.innerHTML += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}">`;
+      board += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}">`;
     }
 
-    board.innerHTML += "<br>";
+    board += "<br>";
   }
+
+  return board;
 }
 
 // Main code
 
-createBoard(2, 2, document.getElementById("board"));
+document.getElementById("board").innerHTML = createBoard(2, 2);
