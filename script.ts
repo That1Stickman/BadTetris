@@ -1,10 +1,12 @@
-class Tile {
-  filled: boolean;
-  color;
+type color = "cyan" | "yellow" | "purple" | "green" | "red" | "blue" | "orange";
 
+class Tile {
   row: number;
   column: number;
   id: string;
+
+  filled: boolean;
+  color: color;
 
   /**
    * Constructs a new tile
@@ -18,6 +20,9 @@ class Tile {
     this.row = row;
     this.column = column;
     this.id = `r${row}c${column}`;
+
+    this.filled = false;
+    // this.color = null;
   }
 }
 

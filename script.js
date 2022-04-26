@@ -11,6 +11,8 @@ var Tile = /** @class */ (function () {
         this.row = row;
         this.column = column;
         this.id = "r".concat(row, "c").concat(column);
+        this.filled = false;
+        // this.color = null;
     }
     return Tile;
 }());
@@ -27,7 +29,7 @@ function createBoard(width, height, board) {
             var tile = new Tile(row, column);
             board.innerHTML += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
         }
-        //board.innerHTML += "<br>";
+        board.innerHTML += "<br>";
     }
 }
 // Main code
