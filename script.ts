@@ -27,14 +27,15 @@ class Tile {
 }
 
 /**
- * Create a tetris board of specified width and height
+ * Create and return a tetris board of specified length and width
  * 
  * @param {number} width - The width of the board
  * @param {number} height - The height of the board
- * @param {object} board - The element where the board will go
+ * @returns - HTML elements of board
  */
 function createBoard(width: number, height: number) {
-  let board = ""
+  let board = "";
+
   for (let row = 1; row <= width; row++) {
     for (let column = 1; column <= height; column++) {
       const tile = new Tile(row, column);
