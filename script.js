@@ -24,8 +24,8 @@ var Tile = /** @class */ (function () {
  * @param {object} board - The element where the board will go
  */
 function createBoard(width, height, board) {
-    for (var row = 0; row < width; row++) {
-        for (var column = 0; column < height; column++) {
+    for (var row = 1; row <= width; row++) {
+        for (var column = 1; column <= height; column++) {
             var tile = new Tile(row, column);
             board.innerHTML += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
         }

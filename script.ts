@@ -34,8 +34,8 @@ class Tile {
  * @param {object} board - The element where the board will go
  */
 function createBoard(width: number, height: number, board) {
-  for (let row = 0; row < width; row++) {
-    for (let column = 0; column < height; column++) {
+  for (let row = 1; row <= width; row++) {
+    for (let column = 1; column <= height; column++) {
       const tile = new Tile(row, column);
       board.innerHTML += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}">`;
     }
