@@ -26,7 +26,6 @@ class Tile {
   }
 }
 
-/**@todo make HTMLCollection */
 /**
  * Create and return a tetris board of specified length and width
  * 

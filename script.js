@@ -21,4 +21,3 @@ function createBoard(width, height) {
 }
 document.getElementById("board").innerHTML = createBoard(4, 3);
 const tiles = document.getElementsByClassName("tile");
-console.log(tiles);
