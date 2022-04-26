@@ -1,4 +1,4 @@
-type color = "cyan" | "yellow" | "purple" | "green" | "red" | "blue" | "orange";
+type Color = "cyan" | "yellow" | "purple" | "green" | "red" | "blue" | "orange";
 
 class Tile {
   row: number;
@@ -6,7 +6,7 @@ class Tile {
   id: string;
 
   state: "filled" | "unfilled" | "active";
-  color: color;
+  color: Color;
 
   /**
    * Constructs a new tile
@@ -46,7 +46,18 @@ function createBoard(width: number, height: number) {
   return board;
 }
 
-// Main code
+// Pieces
+interface Tetromino {
+  color: Color;
+}
 
+const I: Tetromino = {color: "cyan"}
+const J: Tetromino = {color: "blue"}
+const L: Tetromino = {color: "orange"}
+const O: Tetromino = {color: "yellow"}
+const S: Tetromino = {color: "green"}
+const Z: Tetromino = {color: "red"}
+
+// Main code
 document.getElementById("board").innerHTML = createBoard(4, 3);
 const tiles: HTMLCollection = document.getElementsByClassName("tile");
