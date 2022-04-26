@@ -31,6 +31,7 @@ class Tile {
  * 
  * @param {number} width - The width of the board
  * @param {number} height - The height of the board
+ * @returns {string} The HTML of the board
  */
 function createBoard(width: number, height: number) {
   let board = "";

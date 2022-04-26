@@ -1,22 +1,21 @@
-var Tile = (function () {
-    function Tile(row, column) {
+class Tile {
+    constructor(row, column) {
         this.row = row;
         this.column = column;
-        this.id = "r".concat(row, "c").concat(column);
+        this.id = `r${row}c${column}`;
         this.state = "unfilled";
         this.color = null;
     }
-    return Tile;
-}());
+}
 function createBoard(width, height) {
-    var board = "";
-    for (var i = 1; i <= width; i++) {
-        var row = "";
-        for (var j = 1; j <= height; j++) {
-            var tile = new Tile(i, j);
-            row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\"></div>");
+    let board = "";
+    for (let i = 1; i <= width; i++) {
+        let row = "";
+        for (let j = 1; j <= height; j++) {
+            const tile = new Tile(i, j);
+            row += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}"></div>`;
         }
-        board += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
+        board += `<div id="r${i}" class="row">${row}</div>`;
     }
     return board;
 }
