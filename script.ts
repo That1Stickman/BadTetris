@@ -26,6 +26,7 @@ class Tile {
   }
 }
 
+/**@todo make HTMLCollection */
 /**
  * Create and return a tetris board of specified length and width
  * 
@@ -49,3 +50,4 @@ function createBoard(width: number, height: number) {
 // Main code
 
 document.getElementById("board").innerHTML = createBoard(4, 3);
+const tiles = document.getElementsByClassName("tile");
