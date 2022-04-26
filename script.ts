@@ -50,4 +50,4 @@ function createBoard(width: number, height: number) {
 // Main code
 
 document.getElementById("board").innerHTML = createBoard(4, 3);
-const tiles = document.getElementsByClassName("tile");
+const tiles: HTMLCollection = document.getElementsByClassName("tile");
