@@ -32,7 +32,6 @@ class Tile {
  * @param {number} width - The width of the board
  * @param {number} height - The height of the board
  * @param {HTMLElement} board - The HTML element where the board will go
- * @returns - HTML elements of board
  */
 function createBoard(width: number, height: number, board: HTMLElement) {
   for (let i = 1; i <= width; i++) {
