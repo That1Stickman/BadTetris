@@ -56,6 +56,7 @@ const J: Tetromino = {color: "blue"}
 const L: Tetromino = {color: "orange"}
 const O: Tetromino = {color: "yellow"}
 const S: Tetromino = {color: "green"}
+const T: Tetromino = {color: "purple"}
 const Z: Tetromino = {color: "red"}
 
 // Main code

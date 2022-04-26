@@ -19,5 +19,12 @@ function createBoard(width, height) {
     }
     return board;
 }
+const I = { color: "cyan" };
+const J = { color: "blue" };
+const L = { color: "orange" };
+const O = { color: "yellow" };
+const S = { color: "green" };
+const T = { color: "purple" };
+const Z = { color: "red" };
 document.getElementById("board").innerHTML = createBoard(4, 3);
 const tiles = document.getElementsByClassName("tile");
