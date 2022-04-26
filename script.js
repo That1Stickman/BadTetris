@@ -1,35 +1,34 @@
-class Tile {
+var Tile = /** @class */ (function () {
     /**
-     * Creates instance of Tile
-     * 
-     * @param {number} row The row of a tile
-     * @param {number} column The column of a board
+     * Constructs a new tile
+     *
+     * @constructor
+     *
+     * @param {number} row - The row of the tile
+     * @param {number} column - The column of the tile
      */
-    constructor(row, column) {
-        this.x = row;
+    function Tile(row, column) {
+        this.row = row;
         this.column = column;
-        this.id = `r${row}c${column}`;
+        this.id = "r".concat(row, "c").concat(column);
     }
-}
-
+    return Tile;
+}());
 /**
  * Create a tetris board of specified width and height
- * 
- * @param {number} width The width of the board
- * @param {number} height The height of the board
- * @param {object} board The element where the board will go
+ *
+ * @param {number} width - The width of the board
+ * @param {number} height - The height of the board
+ * @param {object} board - The element where the board will go
  */
 function createBoard(width, height, board) {
-    for (let row = 0; row < width; row++) {
-        for (let column = 0; column < height; column++) {
-            const tile = new Tile(row, column);
-            board.innerHTML += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}"`;
+    for (var row = 0; row < width; row++) {
+        for (var column = 0; column < height; column++) {
+            var tile = new Tile(row, column);
+            board.innerHTML += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">");
         }
-
-        board.innerHTML += "<br>"
+        //board.innerHTML += "<br>";
     }
 }
-
 // Main code
-
 createBoard(2, 2, document.getElementById("board"));
