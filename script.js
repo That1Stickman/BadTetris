@@ -7,17 +7,25 @@ class Tile {
         this.color = null;
     }
 }
-function createBoard(width, height) {
-    let board = "";
-    for (let i = 1; i <= width; i++) {
-        let row = "";
-        for (let j = 1; j <= height; j++) {
-            const tile = new Tile(i, j);
-            row += `<div id="${tile.id}" class="tile r${tile.row} c${tile.column}"></div>`;
+function createBoard(width, height, board) {
+  if (width>=4){
+    if (height>=3){
+      document.getElementById("board").innerHTML="";
+    for (var i = 1; i <= height; i++) {
+        var row = "";
+        for (var j = 1; j <= width; j++) {
+            var tile = new Tile(i, j);
+            row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\"></div>");
         }
-        board += `<div id="r${i}" class="row">${row}</div>`;
+        board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
     }
-    return board;
+  document.getElementById("board").style.minWidth= (width*30)+"px";
+  document.getElementById("definerows").value = "";
+  document.getElementById("definecolumns").value = "";
+                }
+    }
+  
+  
 }
 const I = { color: "cyan" };
 const J = { color: "blue" };
@@ -26,5 +34,4 @@ const O = { color: "yellow" };
 const S = { color: "green" };
 const T = { color: "purple" };
 const Z = { color: "red" };
-document.getElementById("board").innerHTML = createBoard(4, 3);
 const tiles = document.getElementsByClassName("tile");

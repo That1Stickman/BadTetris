@@ -7,9 +7,10 @@
 
   <body>
     <div id="start-buttons">
-      <button id="start-tetris">Start</button>
-    </div>
-    <div id="board" align="center"></div>
+      Rows: <input id="definerows" class="inputs"> <br>
+    Columns: <input id="definecolumns" class="inputs"><br>
+      <button id="start-tetris" onclick ="createBoard(document.getElementById('definerows').value, document.getElementById('definecolumns').value, document.getElementById('board'))">Start</button><br>
+    <div id="board" align="left"></div>
     <script src="script.js"></script>
   </body>
 </html>
