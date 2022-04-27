@@ -27,7 +27,14 @@ function createBoard(width, height, board) {
   
   
 }
-const I = { color: "cyan" };
+
+class Piece{
+  //setInterval(pieceUpdate, gamespeed)
+}
+const I = { 
+  color: "cyan" 
+  
+};
 const J = { color: "blue" };
 const L = { color: "orange" };
 const O = { color: "yellow" };
