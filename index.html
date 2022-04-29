@@ -5,11 +5,12 @@
     <link rel="stylesheet" href="style.css" type="text/css">
   </head>
 
-  <body>
+  <body id = "sum">
     <div id="start-buttons">
       Rows: <input id="definerows" class="inputs"> <br>
     Columns: <input id="definecolumns" class="inputs"><br>
       <button id="start-tetris" onclick ="createBoard(document.getElementById('definerows').value, document.getElementById('definecolumns').value, document.getElementById('board'))">Start</button><br>
+      <input id="definepiece" class="inputs"><button>Spawn Piece</button></div>
     <div id="board" align="left"></div>
     <script src="script.js"></script>
   </body>
