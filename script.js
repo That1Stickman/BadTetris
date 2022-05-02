@@ -1,31 +1,30 @@
 class Tile {
-    constructor(row, column, state) {
+    constructor(row, column) {
         this.row = row;
         this.column = column;
         this.id = `r${row}c${column}`;
-        this.state = state;
+        this.state = "unfilled";
         this.color = null;
     }
 }
-function createBoard(width, height, board) {
-  if (width>=3){
-    if (height>=4){
+function createBoard(height, width, board) {
+  if (height>=4){
+    if (width>=3){
       document.getElementById("board").innerHTML="";
-    for (var i = 1; i <= width; i++) {
+    for (var i = 1; i <= height; i++) {
         var row = "";
-        for (var j = 1; j <= height; j++) {
-            var tile = new Tile(i, j,0);
-            row += "<div id=\"".concat(tile.id), "\" class='tile'></div>";
+        for (var j = 1; j <= width; j++) {
+            var tile = new Tile(i, j);
+            row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\"></div>");
         }
-        board.innerHTML += "<div id=\"r".concat(i, "\" class='tile'></div>");
+        board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
     }
-  document.getElementById("board").style.minWidth= (height*30)+"px";
+  document.getElementById("board").style.minWidth= (width*30)+"px";
   document.getElementById("definerows").value = "";
   document.getElementById("definecolumns").value = "";
-                }
+ CreateSpawn(width)
     }
-  BoardSpawn = CreateSpawn(height);
-  
+  }
 }
 
 class Piece{
@@ -88,6 +87,7 @@ function CreateSpawn(columns){
   }
   spawncut = (columns-4)/2
   spawn = spawn.slice(spawncut,-spawncut)
+  console.log(spawn)
   return spawn
 }
 const tiles = document.getElementsByClassName("tile");
