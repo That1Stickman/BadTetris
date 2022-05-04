@@ -1,10 +1,8 @@
 class Tile {
-    constructor(row, column, state, color) {
+    constructor(row, column) {
         this.row = row;
         this.column = column;
         this.id = `r${row}c${column}`;
-        this.state = state;
-        this.color = color;
     }
 }
 function createBoard(height, width, board) {
@@ -14,7 +12,7 @@ function createBoard(height, width, board) {
     for (var i = 1; i <= height; i++) {
         var row = "";
         for (var j = 1; j <= width; j++) {
-            var tile = new Tile(i, j, 0, "white");
+            var tile = new Tile(i, j);
             row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\"></div>");
         }
         board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
@@ -38,15 +36,15 @@ const I = {
     [0,0,0,0]
   ]
 }
-const J = {
-  color: "blue",
+const L = {
+  color: "Orange",
   pieceShape: [
     [1,0,0,0],
     [1,1,1,0]
   ]
 };
-const L = {
-  color: "orange",
+const J = {
+  color: "blue",
   pieceShape: [
     [0,0,0,1],
     [0,1,1,1]
@@ -59,8 +57,8 @@ const O = {
     [0,1,1,0]
   ]
 };
-const S = {
-  color: "green",
+const Z = {
+  color: "red",
   pieceShape: [
     [0,1,1,0],
     [1,1,0,0]
@@ -73,8 +71,8 @@ const T = {
     [1,1,1,0]
   ]
 };
-const Z = {
-  color: "red",
+const S = {
+  color: "green",
 pieceShape: [
     [0,1,1,0],
     [0,0,1,1]
@@ -93,16 +91,15 @@ function CreateSpawn(columns){
 const tiles = document.getElementsByClassName("tile");
 
 function CreatePiece(piece){
-for (let i = spawnArray[0]; i<= spawnArray[3]; i++){
-  document.getElementById("r1c"+i).innerHTML = piece.pieceShape[0][spawnArray[3]-i]
-    if(document.getElementById("r2c"+i).innerHTML = 1){ document.getElementById("r1c"+i).style.backgroundColor =piece.color 
-  }
+for (let n=1; n<=2; n++){
+  for (let i = spawnArray[0]; i<= spawnArray[3]; i++){
+  document.getElementById("r"+n+"c"+i).innerHTML = piece.pieceShape[n-1][spawnArray[3]-i]
+if (document.getElementById("r"+n+"c"+i).innerHTML == 1){ document.getElementById("r"+n+"c"+i).style.backgroundColor = piece.color
+document.getElementById("r"+n+"c"+i).style.color = piece.color
+}else{ document.getElementById("r"+n+"c"+i).style.backgroundColor = "white"
+document.getElementById("r"+n+"c"+i).style.color = "white"
 }
-for (let i = spawnArray[0]; i<= spawnArray[3]; i++){
-  document.getElementById("r2c"+i).innerHTML = piece.pieceShape[1][spawnArray[3]-i]
-  if(document.getElementById("r2c"+i).innerHTML = 1){
-document.getElementById("r1c"+i).style.backgroundColor =piece.color 
   }
     }
-  document.getElementById("definepiece").innerHTML = ''
+  document.getElementById("definepiece").value = ''
 }
