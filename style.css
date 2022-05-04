@@ -1,17 +1,20 @@
+:root{
+  --background-color: white;
+}
 #board {
   display: grid;
   padding: 25px;
 }
 
 .tile {
-  --background-color: white;
   display: inline-block;
   width: 25px;
   height: 25px;
   background-color: var(--background-color);
   border: 1px solid black;
   margin: 0px;
-  margin-bottom: -4px;
+  margin-left: -1px;
+  margin-bottom: -6px;
 }
 .inputs{
   width: 20px;

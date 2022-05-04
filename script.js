@@ -1,10 +1,10 @@
 class Tile {
-    constructor(row, column) {
+    constructor(row, column, state, color) {
         this.row = row;
         this.column = column;
         this.id = `r${row}c${column}`;
-        this.state = "unfilled";
-        this.color = null;
+        this.state = state;
+        this.color = color;
     }
 }
 function createBoard(height, width, board) {
@@ -14,7 +14,7 @@ function createBoard(height, width, board) {
     for (var i = 1; i <= height; i++) {
         var row = "";
         for (var j = 1; j <= width; j++) {
-            var tile = new Tile(i, j);
+            var tile = new Tile(i, j, 0, "white");
             row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\"></div>");
         }
         board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
@@ -22,7 +22,7 @@ function createBoard(height, width, board) {
   document.getElementById("board").style.minWidth= (width*30)+"px";
   document.getElementById("definerows").value = "";
   document.getElementById("definecolumns").value = "";
- CreateSpawn(width)
+ window.spawnArray = CreateSpawn(width);
     }
   }
 }
@@ -88,6 +88,21 @@ function CreateSpawn(columns){
   spawncut = (columns-4)/2
   spawn = spawn.slice(spawncut,-spawncut)
   console.log(spawn)
-  return spawn
+  return spawn;
 }
 const tiles = document.getElementsByClassName("tile");
+
+function CreatePiece(piece){
+for (let i = spawnArray[0]; i<= spawnArray[3]; i++){
+  document.getElementById("r1c"+i).innerHTML = piece.pieceShape[0][spawnArray[3]-i]
+    if(document.getElementById("r2c"+i).innerHTML = 1){ document.getElementById("r1c"+i).style.backgroundColor =piece.color 
+  }
+}
+for (let i = spawnArray[0]; i<= spawnArray[3]; i++){
+  document.getElementById("r2c"+i).innerHTML = piece.pieceShape[1][spawnArray[3]-i]
+  if(document.getElementById("r2c"+i).innerHTML = 1){
+document.getElementById("r1c"+i).style.backgroundColor =piece.color 
+  }
+    }
+  document.getElementById("definepiece").innerHTML = ''
+}
