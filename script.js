@@ -12,74 +12,213 @@ class Tile {
 }
 const I = { 
   color: "cyan",
-  pieceShape: [
+  Shape1: [
+    [0,0,0,0],
     [1,1,1,1],
+    [0,0,0,0],
     [0,0,0,0]
+  ],
+  Shape2:[
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,0,1,0]
+  ],
+  Shape3:[
+    [0,0,0,0],
+    [0,0,0,0],
+    [1,1,1,1],
+    [0,0,0,0]  
+  ],
+  Shape4:[
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0]
   ]
 }
 const L = {
   color: "Orange",
-  pieceShape: [
+  Shape1: [
     [1,0,0,0],
-    [1,1,1,0]
+    [1,1,1,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ],
+  Shape2:[
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,1,1,0],
+    [0,0,0,0]
+  ],
+  Shape3:[
+    [0,0,0,0],
+    [1,1,1,0],
+    [0,0,1,0],
+    [0,0,0,0]  
+  ],
+  Shape4:[
+    [1,1,0,0],
+    [1,0,0,0],
+    [1,0,0,0],
+    [0,0,0,0]
   ]
 };
 const J = {
   color: "blue",
-  pieceShape: [
+  Shape1: [
     [0,0,0,1],
-    [0,1,1,1]
+    [0,1,1,1],
+    [0,0,0,0],
+    [0,0,0,0]
+  ],
+  Shape2: [
+    [0,1,1,0],
+    [0,0,1,0],
+    [0,0,1,0],
+    [0,0,0,0]
+  ],
+  Shape3: [
+    [0,0,0,0],
+    [0,1,1,1],
+    [0,1,0,0],
+    [0,0,0,0]
+  ],
+  Shape4: [
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,1,0],
+    [0,0,0,0]
   ]
 };
 const O = {
   color: "yellow",
-  pieceShape: [
+  Shape1: [
     [0,1,1,0],
-    [0,1,1,0]
+    [0,1,1,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ],
+  Shape2: [
+    [0,1,1,0],
+    [0,1,1,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ],
+  Shape3: [
+    [0,1,1,0],
+    [0,1,1,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ],
+  Shape4: [
+    [0,1,1,0],
+    [0,1,1,0],
+    [0,0,0,0],
+    [0,0,0,0]
   ]
 };
 const Z = {
   color: "red",
-  pieceShape: [
+  Shape1: [
     [0,1,1,0],
-    [1,1,0,0]
+    [1,1,0,0],
+    [0,0,0,0],
+    [0,0,0,0]
+  ],
+  Shape2: [
+    [0,1,0,0],
+    [0,1,1,0],
+    [0,0,1,0],
+    [0,0,0,0]
+  ],
+  Shape3: [
+    [0,0,0,0],
+    [0,1,1,0],
+    [1,1,0,0],
+    [0,0,0,0]
+  ],
+  Shape4: [
+    [1,0,0,0],
+    [1,1,0,0],
+    [0,1,0,0],
+    [0,0,0,0]
   ]
 };
 const T = {
   color: "purple",
-  pieceShape: [
+  Shape1: [
     [0,1,0,0],
-    [1,1,1,0]
+    [1,1,1,0],
+    [0,0,0,0],
+    [0,0,0,0]
   ]
 };
 const S = {
   color: "green",
-pieceShape: [
+Shape1: [
     [0,1,1,0],
     [0,0,1,1]
  ]
 };
-const possiblePieces = [I,L,J,O,Z,T,S]
+let possiblePieces = [I,L,J,O,Z,T,S]
 document.addEventListener("keydown", function(e){
     var key = e.key
     if(key == "a"){
-      movement(-1);
-    }else if (key=="d"){
-      movement(1)
-    }else if (key =="w"){
-     for(i=1; i<=height; i++)
-       pieceUpdate();
-    }else if (key =="s"){
-       pieceUpdate();
+      movement(-1);}
+    if(key == "d"){
+      movement(1)}
+    if(key == "w"){
+     currentpiece2= currentpiece
+      while(currentpiece2== currentpiece){
+        pieceUpdate();
+      }
+      currentpiece2 = ''
+       }
+    if(key == "s"){
+       pieceUpdate();}
+    if(key == "e"){
+      rotate(1)
+    }
+    if(key == "q"){
+      rotate(-1)
     }
   })
+function rotate(value){
+   x = activeTiles[0]
+   newspawn = []
+  for(n=x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]; n<=x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]+3; n++){
+    newspawn[n] = []
+    for(i=x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]; i<=x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]+3; i++){
+    try{if(currentpiece["Shape"+(currentrotation+value)][n-(n-1)][i-(i-1)] == 1 && !(document.getElementById("r"+n+"c"+i).innerHTML == 0 ||document.getElementById(sample).innerHTML == 1)){
+      console.log("whoops")
+      return true
+    }}
+    catch(err){
+      console.log("whoopsw")
+      return true
+    }}}
+  for (let x of activeTiles){
+   x.style.backgroundColor = "white"
+   x.style.color = "white"
+   x.innerHTML = "0"
+  }
+  activeTiles = []
+  for(let x of newspawn){
+  //if()
+  document.getElementById(x).innerHTML=1
+  document.getElementById(x).style.backgroundColor = currentpiece.color
+  document.getElementById(x).style.color = currentpiece.color
+  activeTiles.push(document.getElementById(x))
+  }
+}
 function movement(value){
   newspawn = []
   for (let x of activeTiles){
       sample = x.id.match(/[a-zA-Z]+|[0-9]+/g)
       sample[3] = parseInt(sample[3])+value
       sample = sample.join("")
-     newspawn.push(sample)
+      newspawn.push(sample)
     try{if(!(document.getElementById(sample).innerHTML == 0 ||document.getElementById(sample).innerHTML == 1)){
       return true
     }
@@ -101,7 +240,7 @@ function movement(value){
   activeTiles.push(document.getElementById(x))
   }
 }
-function createBoard(height, width) {
+function createBoard(height, width){
   if (height>=3){
     if (width>=6){
       document.getElementById("board").innerHTML="";
@@ -119,6 +258,7 @@ function createBoard(height, width) {
  window.spawnArray = CreateSpawn(width);
  window.width = width
  window.height = height
+CreatePiece(possiblePieces[Math.floor(Math.random()*possiblePieces.length)])
     }
   }
 }
@@ -137,6 +277,7 @@ function pieceUpdate(){
       activeTiles = []
       window.clearInterval(Interval)
       Interval = null
+      CreatePiece(possiblePieces[Math.floor(Math.random()*possiblePieces.length)])
       return true
     }
        }
@@ -148,6 +289,7 @@ function pieceUpdate(){
       activeTiles = []
       window.clearInterval(Interval)
       Interval = null
+      CreatePiece(possiblePieces[Math.floor(Math.random()*possiblePieces.length)])
       return true
     }
   }
@@ -173,30 +315,51 @@ function CreateSpawn(columns){
   spawn = spawn.slice(spawncut,-spawncut)
   return spawn;
 }
-function CreatePiece(piece, origin){
+function CreatePiece(piece){
 for (let n=1; n<=2; n++){
-  for (let i = origin[0]; i<= origin[3]; i++){
-  document.getElementById("r"+n+"c"+i).innerHTML = piece.pieceShape[n-1][origin[3]-i]
+  for (let i = spawnArray[0]; i<= spawnArray[3]; i++){
+    if(document.getElementById("r"+n+"c"+i).innerHTML<=1){
+  document.getElementById("r"+n+"c"+i).innerHTML = piece.Shape1[n-1][spawnArray[3]-i]
 if (document.getElementById("r"+n+"c"+i).innerHTML == 1){ document.getElementById("r"+n+"c"+i).style.backgroundColor = piece.color
 document.getElementById("r"+n+"c"+i).style.color = piece.color
 activeTiles.push(document.getElementById("r"+n+"c"+i))
 }else{ document.getElementById("r"+n+"c"+i).style.backgroundColor = "white"
 document.getElementById("r"+n+"c"+i).style.color = "white"
 }}}
-  document.getElementById("definepiece").value = ''
   currentpiece = piece
+  currentrotation = 1
   Interval = window.setInterval(pieceUpdate, gamespeed)
-}
-function ClearRow(){
-  for(n=1; n<=width; n++){
-      rowchecker = []
-      fullrow = []
-    for(i=1; i<=height; i++){
-      rowchecker.push(document.getElementById("r"+n+"c"+i).innerHTML)
-      fullrow.push(2)
-    }
-    if(rowchecker == fullrow){
-      console.log("success!")
-    }
+  possiblePieces.splice(possiblePieces.indexOf(piece),1)
+  if(possiblePieces.toString() == ''){
+    possiblePieces = [I,L,J,O,Z,T,S]
+  }}/*else{
+  for(x of tiles){
+    x.remove()
+  }*/
   }
 }
+function ClearRow(){
+  storedrows = []
+  for(n=1; n<=height; n++){
+      rowchecker = []
+      fullrow = []
+    for(i=1; i<=width; i++){ rowchecker.push(document.getElementById("r"+n+"c"+i).innerHTML)
+      fullrow.push("2")
+    if(rowchecker.toString() == fullrow.toString() && rowchecker.length == width){
+      for(x of rowchecker){
+        document.getElementById("r"+n+"c"+i).style.backgroundColor = "white"
+        document.getElementById("r"+n+"c"+i).style.color = "white"
+        document.getElementById("r"+n+"c"+i).innerHTML = "0"
+      }
+      }
+     // for(x of )
+    }
+      storedrows.push(rowchecker)
+    if(storedrows[n-1].toString == fullrow.toString){
+      storedrows.pop()
+      newline = [0,0,0,0,0,0,0,0,0,0]
+      storedrows.unshift(newline)
+    }
+}
+}
+//const spectile = document.getElementById("r"+n+"c"+i)
