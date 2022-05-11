@@ -26,14 +26,23 @@ document.getElementById("10-by-20").addEventListener('click', function() {
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
 });
+
 document.getElementById("20-by-30").addEventListener('click', function() {
   createBoard(20, 30);
   document.getElementById("10-by-20").style.display = 'none';
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
 });
+
 document.getElementById("10-by-10").addEventListener('click', function() {
   createBoard(10, 10);
+  document.getElementById("10-by-20").style.display = 'none';
+  document.getElementById("20-by-30").style.display = 'none';
+  document.getElementById("10-by-10").style.display = 'none';
+});
+
+document.getElementById("custom").addEventListener('click', function() {
+  createBoard(parseInt(prompt("Width")), parseInt(prompt("Height")));
   document.getElementById("10-by-20").style.display = 'none';
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
