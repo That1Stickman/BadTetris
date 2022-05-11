@@ -6,7 +6,7 @@
 .tile {
   user-select: none;
   display: inline-block;
-  font-size:22px;
+  font-size: 22px;
   width: 25px;
   height: 25px;
   background-color: white;
