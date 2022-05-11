@@ -333,7 +333,9 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.backgroundColor = "white"
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
-      }
+      }else{
+        for(x of tiles){
+          x.remove()}
     }
     currentpiece = piece
     currentrotation = 1
@@ -341,12 +343,8 @@ function CreatePiece(piece) {
     if (possiblePieces.toString() == '') {
       possiblePieces = [I, L, J, O, Z, T, S]
     }
-  }/*else{
-  for(x of tiles){
-    x.remove()
-  }*/
-}
-
+  }
+}}
 function ClearRow() {
   storedrows = []
   for (n = 1; n <= height; n++) {
