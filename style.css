@@ -16,12 +16,15 @@
   margin-left: -1px;
   margin-bottom: -5px;
 }
+
 body{
   background-color: gray;
 }
+
 .inputs{
   width: 20px;
 }
+
 button {
  display: block;
 }
