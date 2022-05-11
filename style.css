@@ -17,8 +17,11 @@
   margin-bottom: -5px;
 }
 body{
-  background-color: grey;
+  background-color: gray;
 }
 .inputs{
   width: 20px;
+}
+button {
+ display: block;
 }

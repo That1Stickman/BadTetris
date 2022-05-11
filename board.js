@@ -15,6 +15,7 @@ function createBoard(width, height) {
       window.width = width
       window.height = height
       CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
+      Interval = window.setInterval(pieceUpdate, gamespeed)
     }
   }
 }
@@ -22,18 +23,18 @@ function createBoard(width, height) {
 document.getElementById("10-by-20").addEventListener('click', function() {
   createBoard(10, 20);
   document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("30-by-20").style.display = 'none';
+  document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
 });
-document.getElementById("30-by-20").addEventListener('click', function() {
-  createBoard(30, 20);
+document.getElementById("20-by-30").addEventListener('click', function() {
+  createBoard(20, 30);
   document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("30-by-20").style.display = 'none';
+  document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
 });
 document.getElementById("10-by-10").addEventListener('click', function() {
   createBoard(10, 10);
   document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("30-by-20").style.display = 'none';
+  document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
 });

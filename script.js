@@ -1,5 +1,5 @@
 let gamespeed = 500
-let Interval = window.setInterval(pieceUpdate, gamespeed)
+let Interval
 let currentpiece = ''
 const tiles = document.getElementsByClassName("tile");
 let activeTiles = []
@@ -312,8 +312,12 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
       }else{
-        for(x of tiles){
-          x.remove()}
+        window.clearInterval(Interval)
+        Interval = null
+        console.log("Game Over!")
+        document.getElementById("10-by-20").style.display = 'block';
+  document.getElementById("20-by-30").style.display = 'block';
+  document.getElementById("10-by-10").style.display = 'block';
     }
     currentpiece = piece
     currentrotation = 1
