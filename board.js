@@ -1,4 +1,4 @@
-function createBoard(height, width) {
+function createBoard(width, height) {
   if (height >= 3) {
     if (width >= 6) {
       document.getElementById("board").innerHTML = "";
@@ -21,10 +21,19 @@ function createBoard(height, width) {
 
 document.getElementById("10-by-20").addEventListener('click', function() {
   createBoard(10, 20);
+  document.getElementById("10-by-20").style.display = 'none';
+  document.getElementById("30-by-20").style.display = 'none';
+  document.getElementById("10-by-10").style.display = 'none';
 });
 document.getElementById("30-by-20").addEventListener('click', function() {
   createBoard(30, 20);
+  document.getElementById("10-by-20").style.display = 'none';
+  document.getElementById("30-by-20").style.display = 'none';
+  document.getElementById("10-by-10").style.display = 'none';
 });
 document.getElementById("10-by-10").addEventListener('click', function() {
   createBoard(10, 10);
+  document.getElementById("10-by-20").style.display = 'none';
+  document.getElementById("30-by-20").style.display = 'none';
+  document.getElementById("10-by-10").style.display = 'none';
 });
