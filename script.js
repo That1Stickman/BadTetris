@@ -248,28 +248,6 @@ function movement(value) {
     activeTiles.push(document.getElementById(x))
   }
 }
-function createBoard(height, width) {
-  if (height >= 3) {
-    if (width >= 6) {
-      document.getElementById("board").innerHTML = "";
-      for (let i = 1; i <= height; i++) {
-        let row = "";
-        for (let j = 1; j <= width; j++) {
-          let tile = new Tile(i, j);
-          row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">0</div>");
-        }
-        board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
-      }
-      document.getElementById("board").style.minWidth = (width * 30) + "px";
-      document.getElementById("definerows").value = "";
-      document.getElementById("definecolumns").value = "";
-      window.spawnArray = CreateSpawn(width);
-      window.width = width
-      window.height = height
-      CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
-    }
-  }
-}
 function pieceUpdate() {
   newspawn = []
   for (let x of activeTiles) {
