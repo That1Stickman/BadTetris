@@ -1,5 +1,5 @@
 let gamespeed = 500
-let Interval
+let Interval = window.setInterval(pieceUpdate, gamespeed)
 let currentpiece = ''
 const tiles = document.getElementsByClassName("tile");
 let activeTiles = []
@@ -284,8 +284,6 @@ function pieceUpdate() {
         }
         newspawn = []
         activeTiles = []
-        window.clearInterval(Interval)
-        Interval = null
         CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
         return true
       }
@@ -296,8 +294,6 @@ function pieceUpdate() {
       }
       newspawn = []
       activeTiles = []
-      window.clearInterval(Interval)
-      Interval = null
       CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
       return true
     }
@@ -341,7 +337,6 @@ function CreatePiece(piece) {
     }
     currentpiece = piece
     currentrotation = 1
-    Interval = window.setInterval(pieceUpdate, gamespeed)
     possiblePieces.splice(possiblePieces.indexOf(piece), 1)
     if (possiblePieces.toString() == '') {
       possiblePieces = [I, L, J, O, Z, T, S]
