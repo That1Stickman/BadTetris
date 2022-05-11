@@ -337,7 +337,7 @@ document.getElementById("r"+n+"c"+i).style.color = "white"
     x.remove()
   }*/
   }
-}
+
 function ClearRow(){
   storedrows = []
   for(n=1; n<=height; n++){
