@@ -1,3 +1,4 @@
+
 function createBoard(width, height) {
   if (height >= 3) {
     if (width >= 6) {
@@ -25,6 +26,7 @@ document.getElementById("10-by-20").addEventListener('click', function() {
   document.getElementById("10-by-20").style.display = 'none';
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
+    document.getElementById("custom").style.display = 'none';
 });
 
 document.getElementById("20-by-30").addEventListener('click', function() {
@@ -32,6 +34,7 @@ document.getElementById("20-by-30").addEventListener('click', function() {
   document.getElementById("10-by-20").style.display = 'none';
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
+    document.getElementById("custom").style.display = 'none';
 });
 
 document.getElementById("10-by-10").addEventListener('click', function() {
@@ -39,6 +42,7 @@ document.getElementById("10-by-10").addEventListener('click', function() {
   document.getElementById("10-by-20").style.display = 'none';
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
+    document.getElementById("custom").style.display = 'none';
 });
 
 document.getElementById("custom").addEventListener('click', function() {
@@ -46,4 +50,5 @@ document.getElementById("custom").addEventListener('click', function() {
   document.getElementById("10-by-20").style.display = 'none';
   document.getElementById("20-by-30").style.display = 'none';
   document.getElementById("10-by-10").style.display = 'none';
+  document.getElementById("custom").style.display = 'none';
 });

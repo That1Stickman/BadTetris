@@ -1,186 +1,22 @@
-let gamespeed = 500
-let Interval
-let currentpiece = ''
-const tiles = document.getElementsByClassName("tile");
-let activeTiles = []
-class Tile {
-  constructor(row, column) {
-    this.row = row;
-    this.column = column;
-    this.id = `r${row}c${column}`;
-  }
-}
-const I = {
-  color: "cyan",
-  Shape1: [
-    [0, 0, 0, 0],
-    [1, 1, 1, 1],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape2: [
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 1, 0]
-  ],
-  Shape3: [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [1, 1, 1, 1],
-    [0, 0, 0, 0]
-  ],
-  Shape4: [
-    [0, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 0, 0]
-  ]
-}
-const L = {
-  color: "Orange",
-  Shape1: [
-    [1, 0, 0, 0],
-    [1, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape2: [
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape3: [
-    [0, 0, 0, 0],
-    [1, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape4: [
-    [1, 1, 0, 0],
-    [1, 0, 0, 0],
-    [1, 0, 0, 0],
-    [0, 0, 0, 0]
-  ]
-};
-const J = {
-  color: "blue",
-  Shape1: [
-    [0, 0, 0, 1],
-    [0, 1, 1, 1],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape2: [
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape3: [
-    [0, 0, 0, 0],
-    [0, 1, 1, 1],
-    [0, 1, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape4: [
-    [0, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0]
-  ]
-};
-const O = {
-  color: "yellow",
-  Shape1: [
-    [0, 1, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape2: [
-    [0, 1, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape3: [
-    [0, 1, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape4: [
-    [0, 1, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ]
-};
-const Z = {
-  color: "red",
-  Shape1: [
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape2: [
-    [0, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape3: [
-    [0, 0, 0, 0],
-    [0, 1, 1, 0],
-    [1, 1, 0, 0],
-    [0, 0, 0, 0]
-  ],
-  Shape4: [
-    [1, 0, 0, 0],
-    [1, 1, 0, 0],
-    [0, 1, 0, 0],
-    [0, 0, 0, 0]
-  ]
-};
-const T = {
-  color: "purple",
-  Shape1: [
-    [0, 1, 0, 0],
-    [1, 1, 1, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ]
-};
-const S = {
-  color: "green",
-  Shape1: [
-    [0, 1, 1, 0],
-    [0, 0, 1, 1]
-  ]
-};
-let possiblePieces = [I, L, J, O, Z, T, S]
 document.addEventListener("keydown", function (e) {
   let key = e.key
-  if (key == "a") {
+  if (key == "a" || key == "ArrowLeft") {
     movement(-1);
   }
-  if (key == "d") {
+  if (key == "d" || key == "ArrowRight") {
     movement(1)
   }
-  if (key == "w") {
+  if (key == "w"|| key == " ") {
     currentpiece2 = currentpiece
     while (currentpiece2 == currentpiece) {
       pieceUpdate();
     }
     currentpiece2 = ''
   }
-  if (key == "s") {
+  if (key == "s" || key == "ArrowDown") {
     pieceUpdate();
   }
-  if (key == "e") {
+  if (key == "e" || key == "ArrowUp") {
     rotate(1)
   }
   if (key == "q") {
@@ -312,12 +148,13 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
       }else{
-        window.clearInterval(Interval)
+        clearInterval(Interval)
         Interval = null
         console.log("Game Over!")
         document.getElementById("10-by-20").style.display = 'block';
   document.getElementById("20-by-30").style.display = 'block';
   document.getElementById("10-by-10").style.display = 'block';
+  document.getElementById("custom").style.display = 'block';
     }
     currentpiece = piece
     currentrotation = 1
