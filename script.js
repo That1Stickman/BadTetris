@@ -1,8 +1,8 @@
 let gamespeed = 500
-var Interval
-var currentpiece = ''
+let Interval
+let currentpiece = ''
 const tiles = document.getElementsByClassName("tile");
-var activeTiles = []
+let activeTiles = []
 class Tile {
   constructor(row, column) {
     this.row = row;
@@ -163,7 +163,7 @@ const S = {
 };
 let possiblePieces = [I, L, J, O, Z, T, S]
 document.addEventListener("keydown", function (e) {
-  var key = e.key
+  let key = e.key
   if (key == "a") {
     movement(-1);
   }
@@ -252,10 +252,10 @@ function createBoard(height, width) {
   if (height >= 3) {
     if (width >= 6) {
       document.getElementById("board").innerHTML = "";
-      for (var i = 1; i <= height; i++) {
-        var row = "";
-        for (var j = 1; j <= width; j++) {
-          var tile = new Tile(i, j);
+      for (let i = 1; i <= height; i++) {
+        let row = "";
+        for (let j = 1; j <= width; j++) {
+          let tile = new Tile(i, j);
           row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">0</div>");
         }
         board.innerHTML += "<div id=\"r".concat(i, "\" class=\"row\">").concat(row, "</div>");
@@ -317,7 +317,7 @@ function pieceUpdate() {
 }
 function CreateSpawn(columns) {
   spawn = []
-  for (var i = 1; i <= columns; i++) {
+  for (let i = 1; i <= columns; i++) {
     spawn.push(i)
   }
   spawncut = (columns - 4) / 2
