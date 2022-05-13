@@ -1,5 +1,8 @@
-document.addEventListener("keydown", function (e) {
-  let key = e.key
+document.addEventListener("keydown", function(e) {
+keypress(e)
+})
+function keypress(e){
+    let key = e.key
   if (key == "a" || key == "ArrowLeft") {
     movement(-1);
   }
@@ -22,7 +25,7 @@ document.addEventListener("keydown", function (e) {
   if (key == "q") {
     rotate(-1)
   }
-})
+}
 function rotate(value) {
   x = activeTiles[0]
   newspawn = []
