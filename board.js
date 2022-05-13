@@ -21,34 +21,34 @@ function createBoard(width, height) {
   }
 }
 
-document.getElementById("10-by-20").addEventListener('click', function() {
+document.getElementById("ten-by-twenty").addEventListener('click', function() {
   createBoard(10, 20);
-  document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("20-by-30").style.display = 'none';
-  document.getElementById("10-by-10").style.display = 'none';
+  document.getElementById("ten-by-twenty").style.display = 'none';
+  document.getElementById("twenty-by-thirty").style.display = 'none';
+  document.getElementById("ten-by-ten").style.display = 'none';
     document.getElementById("custom").style.display = 'none';
 });
 
-document.getElementById("20-by-30").addEventListener('click', function() {
+document.getElementById("twenty-by-thirty").addEventListener('click', function() {
   createBoard(20, 30);
-  document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("20-by-30").style.display = 'none';
-  document.getElementById("10-by-10").style.display = 'none';
+  document.getElementById("ten-by-twenty").style.display = 'none';
+  document.getElementById("twenty-by-thirty").style.display = 'none';
+  document.getElementById("ten-by-ten").style.display = 'none';
     document.getElementById("custom").style.display = 'none';
 });
 
-document.getElementById("10-by-10").addEventListener('click', function() {
+document.getElementById("ten-by-ten").addEventListener('click', function() {
   createBoard(10, 10);
-  document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("20-by-30").style.display = 'none';
-  document.getElementById("10-by-10").style.display = 'none';
-    document.getElementById("custom").style.display = 'none';
+  document.getElementById("ten-by-twenty").style.display = 'none';
+  document.getElementById("twenty-by-thirty").style.display = 'none';
+  document.getElementById("ten-by-ten").style.display = 'none';
+  document.getElementById("custom").style.display = 'none';
 });
 
 document.getElementById("custom").addEventListener('click', function() {
   createBoard(parseInt(prompt("Width")), parseInt(prompt("Height")));
-  document.getElementById("10-by-20").style.display = 'none';
-  document.getElementById("20-by-30").style.display = 'none';
-  document.getElementById("10-by-10").style.display = 'none';
+  document.getElementById("ten-by-twenty").style.display = 'none';
+  document.getElementById("twenty-by-thirty").style.display = 'none';
+  document.getElementById("ten-by-ten").style.display = 'none';
   document.getElementById("custom").style.display = 'none';
 });

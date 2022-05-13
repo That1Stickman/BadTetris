@@ -23,4 +23,24 @@ body {
 
 button {
   display: block;
+  margin: 2px auto 2px auto;
+  font: 20px 'Courier New', monospace;
+  color: white;
+  border: 2px solid white;
+}
+
+#ten-by-twenty {
+  background-color: blue;
+}
+
+#twenty-by-thirty {
+  background-color: green;
+}
+
+#ten-by-ten {
+  background-color: orange;
+}
+
+#custom {
+  background-color: red;
 }
