@@ -1,6 +1,6 @@
 function listener (e) {
 keypress(e)
-})
+}
 function keypress(e){
     let key = e.key
   if (key == "a" || key == "ArrowLeft") {
@@ -156,9 +156,9 @@ function CreatePiece(piece) {
         clearInterval(Interval)
         Interval = null
         console.log("Game Over!")
-        document.getElementById("10-by-20").style.display = 'block';
-  document.getElementById("20-by-30").style.display = 'block';
-  document.getElementById("10-by-10").style.display = 'block';
+        document.getElementById("ten-by-twenty").style.display = 'block';
+  document.getElementById("twenty-by-thirty").style.display = 'block';
+  document.getElementById("ten-by-ten").style.display = 'block';
   document.getElementById("custom").style.display = 'block';
     }
     currentpiece = piece

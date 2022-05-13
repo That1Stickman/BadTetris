@@ -14,29 +14,30 @@ function createBoard(width, height) {
       window.spawnArray = CreateSpawn(width);
       window.width = width
       window.height = height
-     document.addEventListener("keydown", listener) CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
+      document.addEventListener("keydown", listener)
+      CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
       Interval = window.setInterval(pieceUpdate, gamespeed)
     }
   }
 }
 
-document.getElementById("ten-by-twenty").addEventListener('click', function() {
+document.getElementById("ten-by-twenty").addEventListener('click', function () {
   createBoard(10, 20);
   document.getElementById("ten-by-twenty").style.display = 'none';
   document.getElementById("twenty-by-thirty").style.display = 'none';
   document.getElementById("ten-by-ten").style.display = 'none';
-    document.getElementById("custom").style.display = 'none';
+  document.getElementById("custom").style.display = 'none';
 });
 
-document.getElementById("twenty-by-thirty").addEventListener('click', function() {
+document.getElementById("twenty-by-thirty").addEventListener('click', function () {
   createBoard(20, 30);
   document.getElementById("ten-by-twenty").style.display = 'none';
   document.getElementById("twenty-by-thirty").style.display = 'none';
   document.getElementById("ten-by-ten").style.display = 'none';
-    document.getElementById("custom").style.display = 'none';
+  document.getElementById("custom").style.display = 'none';
 });
 
-document.getElementById("ten-by-ten").addEventListener('click', function() {
+document.getElementById("ten-by-ten").addEventListener('click', function () {
   createBoard(10, 10);
   document.getElementById("ten-by-twenty").style.display = 'none';
   document.getElementById("twenty-by-thirty").style.display = 'none';
@@ -44,7 +45,7 @@ document.getElementById("ten-by-ten").addEventListener('click', function() {
   document.getElementById("custom").style.display = 'none';
 });
 
-document.getElementById("custom").addEventListener('click', function() {
+document.getElementById("custom").addEventListener('click', function () {
   createBoard(parseInt(prompt("Width")), parseInt(prompt("Height")));
   document.getElementById("ten-by-twenty").style.display = 'none';
   document.getElementById("twenty-by-thirty").style.display = 'none';
