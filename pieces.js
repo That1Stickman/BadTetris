@@ -1,4 +1,3 @@
-
 let gamespeed = 500
 let Interval
 let currentpiece = ''

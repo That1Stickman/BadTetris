@@ -1,4 +1,3 @@
-
 function createBoard(width, height) {
   if (height >= 3) {
     if (width >= 6) {
@@ -15,7 +14,7 @@ function createBoard(width, height) {
       window.spawnArray = CreateSpawn(width);
       window.width = width
       window.height = height
-      CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
+     document.addEventListener("keydown", listener) CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
       Interval = window.setInterval(pieceUpdate, gamespeed)
     }
   }

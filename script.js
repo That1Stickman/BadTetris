@@ -1,4 +1,4 @@
-document.addEventListener("keydown", function(e) {
+function listener (e) {
 keypress(e)
 })
 function keypress(e){
@@ -151,6 +151,8 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
       }else{
+        activeTiles = []
+        document.removeEventListener("keydown", listener)
         clearInterval(Interval)
         Interval = null
         console.log("Game Over!")
