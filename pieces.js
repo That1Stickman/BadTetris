@@ -1,6 +1,7 @@
 let gamespeed = 500
 let Interval
 let currentpiece = ''
+let piececount = 0
 const tiles = document.getElementsByClassName("tile");
 let activeTiles = []
 class Tile {

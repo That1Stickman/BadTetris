@@ -10,8 +10,8 @@ function keypress(e){
     movement(1)
   }
   if (key == "w"|| key == " ") {
-    currentpiece2 = currentpiece
-    while (currentpiece2 == currentpiece) {
+    currentpiece2 = piececount
+    while (currentpiece2 == piececount) {
       pieceUpdate();
     }
     currentpiece2 = ''
@@ -19,12 +19,12 @@ function keypress(e){
   if (key == "s" || key == "ArrowDown") {
     pieceUpdate();
   }
-  if (key == "e" || key == "ArrowUp") {
+ /* if (key == "e" || key == "ArrowUp") {
     rotate(1)
   }
   if (key == "q") {
     rotate(-1)
-  }
+  }*/
 }
 function rotate(value) {
   x = activeTiles[0]
@@ -150,11 +150,13 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.backgroundColor = "white"
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
+        piececount += 1
       }else{
         activeTiles = []
         document.removeEventListener("keydown", listener)
         clearInterval(Interval)
         Interval = null
+        piececount = 0
         console.log("Game Over!")
         document.getElementById("ten-by-twenty").style.display = 'block';
   document.getElementById("twenty-by-thirty").style.display = 'block';
