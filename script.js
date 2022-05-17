@@ -19,21 +19,26 @@ function keypress(e){
   if (key == "s" || key == "ArrowDown") {
     pieceUpdate();
   }
- /* if (key == "e" || key == "ArrowUp") {
+ if (key == "e" || key == "ArrowUp") {
     rotate(1)
   }
   if (key == "q") {
     rotate(-1)
-  }*/
+  }
 }
 function rotate(value) {
   x = activeTiles[0]
+  g = currentrotation + value
+  if(g == 0){
+    g = 4
+  }else if (g == 5){
+    g = 1
+  }
   newspawn = []
-  for (n = x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]; n <= x.id.match(/[a-zA-Z]+|[0-9]+/g)[1] + 3; n++) {
-    newspawn[n] = []
-    for (i = x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]; i <= x.id.match(/[a-zA-Z]+|[0-9]+/g)[3] + 3; i++) {
+  for (n = x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]; n <= parseInt(x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]) + 3; n++) {
+    for (i = x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]; i <= parseInt(x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]) + 3; i++) {
       try {
-        if (currentpiece["Shape" + (currentrotation + value)][n - (n - 1)][i - (i - 1)] == 1 && !(document.getElementById("r" + n + "c" + i).innerHTML == 0 || document.getElementById(sample).innerHTML == 1)) {
+        if (currentpiece["Shape" + g][n - (n - 1)][i - (i - 1)] == 1 && !(document.getElementById("r" + n + "c" + i).innerHTML == 0 || document.getElementById("r" + n + "c" + i).innerHTML == 1)) {
           console.log("whoops")
           return true
         }
@@ -42,20 +47,23 @@ function rotate(value) {
         console.log("whoopsw")
         return true
       }
+      newspawn.push("r"+n+"c"+i)
     }
   }
+  console.log(newspawn)
   for (let x of activeTiles) {
     x.style.backgroundColor = "white"
     x.style.color = "white"
     x.innerHTML = "0"
+    console.log("x")
   }
   activeTiles = []
-  for (let x of newspawn) {
-    //if()
-    document.getElementById(x).innerHTML = 1
+  for (n=0; n<=3; n++) {
+    if(currentpiece["Shape" + g][n] == 1){
+    document.getElementById().innerHTML = 1
     document.getElementById(x).style.backgroundColor = currentpiece.color
     document.getElementById(x).style.color = currentpiece.color
-    activeTiles.push(document.getElementById(x))
+    activeTiles.push(document.getElementById(x))}
   }
 }
 function movement(value) {
