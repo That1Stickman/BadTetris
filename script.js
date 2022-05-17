@@ -101,6 +101,7 @@ function pieceUpdate() {
         }
         newspawn = []
         activeTiles = []
+        ClearRow()
         CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
         return true
       }
@@ -111,6 +112,7 @@ function pieceUpdate() {
       }
       newspawn = []
       activeTiles = []
+      ClearRow()
       CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
       return true
     }
