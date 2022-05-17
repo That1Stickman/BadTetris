@@ -101,7 +101,7 @@ function pieceUpdate() {
         }
         newspawn = []
         activeTiles = []
-        CreatePiece(possiblePieces[order])
+        CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
         return true
       }
     }
@@ -163,16 +163,10 @@ function CreatePiece(piece) {
     }
     currentpiece = piece
     currentrotation = 1
-    order += 1
-    if (order == 6) {
-      let newarray = []
-      for(n = 1; n <= 6; n++){
-        randomIndex = Math.floor(Math.random() * possiblePieces.length)
-        newarray[n] = possiblePieces[randomindex]
-        possiblePieces[randomindex]
-      }
-      possiblePieces = newarray
-    }
+    /*possiblePieces.splice(possiblePieces.indexOf(piece), 1)
+    if (possiblePieces.toString() == '') {
+      possiblePieces = [I, L, J, O, Z, T, S]
+    }*/
   }
 }}
 function ClearRow() {
@@ -184,7 +178,7 @@ function ClearRow() {
       rowchecker.push(document.getElementById("r" + n + "c" + i).innerHTML)
       fullrow.push("2")
       if (rowchecker.toString() == fullrow.toString() && rowchecker.length == width){
-        for (i = 1; i <= rowchecker.length; i++) {
+        for (i = 1; i <= fullrow.length; i++) {
           document.getElementById("r" + n + "c" + i).style.backgroundColor = "white"
           document.getElementById("r" + n + "c" + i).style.color = "white"
           document.getElementById("r" + n + "c" + i).innerHTML = "0"
