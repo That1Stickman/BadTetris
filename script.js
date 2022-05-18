@@ -113,6 +113,9 @@ function pieceUpdate() {
         newspawn = []
         activeTiles = []
         ClearRow()
+       ClearRow()
+      ClearRow()
+        ClearRow()
         CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
         return true
       }
@@ -188,7 +191,7 @@ function CreatePiece(piece) {
   }
 }}
 function ClearRow() {
-  for (n = 1; n <= height; n++) {
+  for (n = height; n >= 1; n--) {
     rowchecker = []
     rowchecker2 = []
     fullrow = []
@@ -197,15 +200,28 @@ function ClearRow() {
       rowchecker2.push(document.getElementById("r" + n + "c" + i))
       fullrow.push("2")
       if (rowchecker.toString() == fullrow.toString() && rowchecker.length == width){
-        for (i = 1; i <= fullrow.length; i++) {
-          document.getElementById("r" + n + "c" + i).remove()
-        }
-        /*for (let x of activeTiles) {
+        document.getElementById("r" + n).remove()
+        console.log(board)
+        for (let x of tiles) {
     sample = x.id.match(/[a-zA-Z]+|[0-9]+/g)
-    sample[3] = parseInt(sample[3]) + value
+    if(sample[1]<= n){
+    sample[1] = parseInt(sample[1]) + 1
     sample = sample.join("")
-      }*/
+    x.id = sample}}
+        for (let x of document.getElementsByClassName("row")) {
+    sample = x.id.match(/[a-zA-Z]+|[0-9]+/g)
+    if(sample[1]<= n){
+    sample[1] = parseInt(sample[1]) + 1
+    sample = sample.join("")
+    x.id = sample}}
+        let row = "";
+        for (let j = 1; j <= width; j++) {
+          let tile = new Tile(1, j);
+          row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">0</div>");
+        }
+        board.insertAdjacentHTML("afterbegin","<div id=\"r".concat(1, "\" class=\"row\">").concat(row, "</div>"));
+        return true
+      }
     }
   }
 }
-//const spectile = document.getElementById("r"+n+"c"+i)
