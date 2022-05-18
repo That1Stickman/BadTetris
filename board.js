@@ -15,6 +15,7 @@ function createBoard(width, height) {
       window.width = width
       window.height = height
       document.addEventListener("keydown", listener)
+      document.getElementById("score").innerHTML = "Score: 0"
       CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
       Interval = window.setInterval(pieceUpdate, gamespeed)
     }
@@ -46,9 +47,12 @@ document.getElementById("ten-by-ten").addEventListener('click', function () {
 });
 
 document.getElementById("custom").addEventListener('click', function () {
-  createBoard(parseInt(prompt("Width")), parseInt(prompt("Height")));
+  x = parseInt(prompt("Width"))
+  y = parseInt(prompt("Height"))
+  if( x>= 6 && y >=3 ){
+  createBoard(x,y);
   document.getElementById("ten-by-twenty").style.display = 'none';
   document.getElementById("twenty-by-thirty").style.display = 'none';
   document.getElementById("ten-by-ten").style.display = 'none';
-  document.getElementById("custom").style.display = 'none';
+  document.getElementById("custom").style.display = 'none';}
 });

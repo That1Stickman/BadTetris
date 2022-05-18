@@ -220,6 +220,10 @@ function ClearRow() {
           row += "<div id=\"".concat(tile.id, "\" class=\"tile r").concat(tile.row, " c").concat(tile.column, "\">0</div>");
         }
         board.insertAdjacentHTML("afterbegin","<div id=\"r".concat(1, "\" class=\"row\">").concat(row, "</div>"));
+        scorestuff = document.getElementById("score").innerHTML.split(" ")
+        scorestuff[1] = parseInt(scorestuff[1]) + width*10
+        document.getElementById("score").innerHTML = scorestuff.join(" ")
+        
         return true
       }
     }
