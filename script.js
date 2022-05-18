@@ -35,35 +35,38 @@ function rotate(value) {
     g = 1
   }
   newspawn = []
+  thing = -1
   for (n = x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]; n <= parseInt(x.id.match(/[a-zA-Z]+|[0-9]+/g)[1]) + 3; n++) {
+    thing += 1
+    thing2 = -1
+    newspawn.push([])
     for (i = x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]; i <= parseInt(x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]) + 3; i++) {
+      thing2 += 1
       try {
-        if (currentpiece["Shape" + g][n - (n - 1)][i - (i - 1)] == 1 && !(document.getElementById("r" + n + "c" + i).innerHTML == 0 || document.getElementById("r" + n + "c" + i).innerHTML == 1)) {
-          console.log("whoops")
+        if (currentpiece["Shape" + g][thing][thing2] == 1 && document.getElementById("r" + n + "c" + i).innerHTML >= 2) {
           return true
         }
       }
       catch (err) {
-        console.log("whoopsw")
         return true
       }
-      newspawn.push("r"+n+"c"+i)
+      newspawn[thing].push("r"+n+"c"+i)
     }
   }
-  console.log(newspawn)
   for (let x of activeTiles) {
     x.style.backgroundColor = "white"
     x.style.color = "white"
     x.innerHTML = "0"
-    console.log("x")
   }
   activeTiles = []
+  currentrotation = g
   for (n=0; n<=3; n++) {
-    if(currentpiece["Shape" + g][n] == 1){
-    document.getElementById().innerHTML = 1
-    document.getElementById(x).style.backgroundColor = currentpiece.color
-    document.getElementById(x).style.color = currentpiece.color
-    activeTiles.push(document.getElementById(x))}
+  for(i = 0; i<=3; i++){
+    if(currentpiece["Shape" + g][n][i] == 1){
+    document.getElementById(newspawn[n][i]).innerHTML = 1
+    document.getElementById(newspawn[n][i]).style.backgroundColor = currentpiece.color
+    document.getElementById(newspawn[n][i]).style.color = currentpiece.color
+    activeTiles.push(document.getElementById(newspawn[n][i]))}}
   }
 }
 function movement(value) {
@@ -149,9 +152,11 @@ function CreateSpawn(columns) {
 }
 function CreatePiece(piece) {
   for (let n = 1; n <= 2; n++) {
+    g = -1
     for (let i = spawnArray[0]; i <= spawnArray[3]; i++) {
+      g +=1
       if (document.getElementById("r" + n + "c" + i).innerHTML <= 1) {
-        document.getElementById("r" + n + "c" + i).innerHTML = piece.Shape1[n - 1][spawnArray[3] - i]
+        document.getElementById("r" + n + "c" + i).innerHTML = piece.Shape1[n - 1][g]
         if (document.getElementById("r" + n + "c" + i).innerHTML == 1) {
           document.getElementById("r" + n + "c" + i).style.backgroundColor = piece.color
           document.getElementById("r" + n + "c" + i).style.color = piece.color
@@ -161,6 +166,8 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
         piececount += 1
+        currentpiece = piece
+    currentrotation = 1
       }else{
         activeTiles = []
         document.removeEventListener("keydown", listener)
@@ -173,8 +180,7 @@ function CreatePiece(piece) {
   document.getElementById("ten-by-ten").style.display = 'block';
   document.getElementById("custom").style.display = 'block';
     }
-    currentpiece = piece
-    currentrotation = 1
+    
     /*possiblePieces.splice(possiblePieces.indexOf(piece), 1)
     if (possiblePieces.toString() == '') {
       possiblePieces = [I, L, J, O, Z, T, S]
@@ -182,27 +188,23 @@ function CreatePiece(piece) {
   }
 }}
 function ClearRow() {
-  storedrows = []
   for (n = 1; n <= height; n++) {
     rowchecker = []
+    rowchecker2 = []
     fullrow = []
     for (i = 1; i <= width; i++) {
       rowchecker.push(document.getElementById("r" + n + "c" + i).innerHTML)
+      rowchecker2.push(document.getElementById("r" + n + "c" + i))
       fullrow.push("2")
       if (rowchecker.toString() == fullrow.toString() && rowchecker.length == width){
         for (i = 1; i <= fullrow.length; i++) {
-          document.getElementById("r" + n + "c" + i).style.backgroundColor = "white"
-          document.getElementById("r" + n + "c" + i).style.color = "white"
-          document.getElementById("r" + n + "c" + i).innerHTML = "0"
+          document.getElementById("r" + n + "c" + i).remove()
         }
-      }
-      // for(x of )
-    }
-    storedrows.push(rowchecker)
-    if (storedrows[n - 1].toString == fullrow.toString) {
-      storedrows.pop()
-      newline = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      storedrows.unshift(newline)
+        /*for (let x of activeTiles) {
+    sample = x.id.match(/[a-zA-Z]+|[0-9]+/g)
+    sample[3] = parseInt(sample[3]) + value
+    sample = sample.join("")
+      }*/
     }
   }
 }
