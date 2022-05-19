@@ -14,6 +14,9 @@ function keypress(e){
     while (currentpiece2 == piececount) {
       pieceUpdate();
     }
+    scorestuff = document.getElementById("score").innerHTML.split(" ")
+        scorestuff[1] = parseInt(scorestuff[1]) + 10
+        document.getElementById("score").innerHTML = scorestuff.join(" ")
     currentpiece2 = ''
   }
   if (key == "s" || key == "ArrowDown") {
@@ -110,13 +113,16 @@ function pieceUpdate() {
         for (let x of activeTiles) {
           x.innerHTML = 2
         }
+        scorestuff = document.getElementById("score").innerHTML.split(" ")
+        scorestuff[1] = parseInt(scorestuff[1]) + 10
+        document.getElementById("score").innerHTML = scorestuff.join(" ")
         newspawn = []
         activeTiles = []
         ClearRow()
        ClearRow()
       ClearRow()
         ClearRow()
-        CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
+        CreatePiece(possiblePieces[piececount])
         return true
       }
     }
@@ -127,7 +133,7 @@ function pieceUpdate() {
       newspawn = []
       activeTiles = []
       ClearRow()
-      CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
+       CreatePiece(possiblePieces[piececount])
       return true
     }
   }
@@ -168,28 +174,24 @@ function CreatePiece(piece) {
           document.getElementById("r" + n + "c" + i).style.backgroundColor = "white"
           document.getElementById("r" + n + "c" + i).style.color = "white"
         }
-        piececount += 1
         currentpiece = piece
     currentrotation = 1
       }else{
-        activeTiles = []
         document.removeEventListener("keydown", listener)
         clearInterval(Interval)
         Interval = null
         piececount = 0
-        console.log("Game Over!")
         document.getElementById("ten-by-twenty").style.display = 'block';
   document.getElementById("twenty-by-thirty").style.display = 'block';
   document.getElementById("ten-by-ten").style.display = 'block';
   document.getElementById("custom").style.display = 'block';
     }
-    
-    /*possiblePieces.splice(possiblePieces.indexOf(piece), 1)
-    if (possiblePieces.toString() == '') {
-      possiblePieces = [I, L, J, O, Z, T, S]
-    }*/
   }
-}}
+}piececount += 1
+        if(piececount > 6){
+          piececount = 0
+          randpiece()
+        }}
 function ClearRow() {
   for (n = height; n >= 1; n--) {
     rowchecker = []
@@ -201,7 +203,6 @@ function ClearRow() {
       fullrow.push("2")
       if (rowchecker.toString() == fullrow.toString() && rowchecker.length == width){
         document.getElementById("r" + n).remove()
-        console.log(board)
         for (let x of tiles) {
     sample = x.id.match(/[a-zA-Z]+|[0-9]+/g)
     if(sample[1]<= n){
@@ -223,9 +224,38 @@ function ClearRow() {
         scorestuff = document.getElementById("score").innerHTML.split(" ")
         scorestuff[1] = parseInt(scorestuff[1]) + width*10
         document.getElementById("score").innerHTML = scorestuff.join(" ")
-        
-        return true
+        level += 1
+        if(level == levelcap && gamespeed >= 150){
+          gamespeed -= 40 + (levelcap*5)
+          level = 0
+          levelcap += 1
+          clearInterval(Interval)
+        Interval = null
+          Interval = window.setInterval(pieceUpdate, gamespeed)
+          console.log(gamespeed)
+        }
+        n = height
+      }}}}
+function randpiece(){
+  let currentIndex = possiblePieces.length,  randomIndex
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex--
+    [possiblePieces[currentIndex], possiblePieces[randomIndex]] = [
+      possiblePieces[randomIndex], possiblePieces[currentIndex]]
+  }
+}
+/*function gridlines(){
+  for (let x of tiles) {
+    x.style.border = "none"
+  }
+  for (let x of activeTiles) {
+    sample = x.id.match(/[a-zA-Z]+|[0-9]+/g)[3]
+      for (let z of tiles) {
+        y =z.id.match(/[a-zA-Z]+|[0-9]+/g)[3]
+        if (y = sample){
+          x.style.border = "1px solid black"
       }
     }
   }
-}
+}*/

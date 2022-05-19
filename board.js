@@ -1,6 +1,7 @@
 function createBoard(width, height) {
-  if (height >= 3) {
-    if (width >= 6) {
+  if (height >= 3 && height <= 100) {
+    if (width >= 6 && width <= 100) {
+      activeTiles = []
       document.getElementById("board").innerHTML = "";
       for (let i = 1; i <= height; i++) {
         let row = "";
@@ -16,18 +17,21 @@ function createBoard(width, height) {
       window.height = height
       document.addEventListener("keydown", listener)
       document.getElementById("score").innerHTML = "Score: 0"
-      CreatePiece(possiblePieces[Math.floor(Math.random() * possiblePieces.length)])
+     randpiece
+      peicecount = 0
+       CreatePiece(possiblePieces[piececount])
       Interval = window.setInterval(pieceUpdate, gamespeed)
     }
   }
 }
-
+//function
 document.getElementById("ten-by-twenty").addEventListener('click', function () {
   createBoard(10, 20);
   document.getElementById("ten-by-twenty").style.display = 'none';
   document.getElementById("twenty-by-thirty").style.display = 'none';
   document.getElementById("ten-by-ten").style.display = 'none';
   document.getElementById("custom").style.display = 'none';
+  document.getElementById("source").setAttribute("src", "Tetris Theme.webm")
 });
 
 document.getElementById("twenty-by-thirty").addEventListener('click', function () {
